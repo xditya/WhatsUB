@@ -17,6 +17,7 @@
   "author": "Aditya < https://xditya.me >",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.27.2",
     "dotenv": "^16.0.1",
     "qrcode-terminal": "^0.12.0",
     "whatsapp-web.js": "^1.17.1"
