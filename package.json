@@ -1,0 +1,24 @@
+{
+  "name": "whatsub",
+  "version": "0.0.1",
+  "description": "WhatsApp UserBot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://xditya.me"
+  },
+  "keywords": [
+    "whatsapp",
+    "userbot"
+  ],
+  "author": "Aditya < https://xditya.me >",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.17.1"
+  }
+}
