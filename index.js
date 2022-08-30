@@ -19,7 +19,7 @@ const { checkSessionAndLoad } = require("./database/sessions.js");
   // https://github.com/tuhinpal/WhatsBot/blob/main/main.js#L18-L27
   client.commands = new Map();
   fs.readdir("./modules", (err, files) => {
-    if (err) return console.error(e);
+    if (err) return console.error(err);
     files.forEach((commandFile) => {
       if (commandFile.endsWith(".js")) {
         let commandName = commandFile.replace(".js", "");
