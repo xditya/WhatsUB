@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 
 const { Deta } = require("deta");
 const { zip, COMPRESSION_LEVEL } = require("zip-a-folder");
@@ -17,7 +18,9 @@ const checkSessionAndLoad = async () => {
       if (get_s) {
         const buffer = await get_s.arrayBuffer();
         fs.writeFileSync("./WhatsUB.zip", Buffer.from(buffer));
-        await extract("./WhatsUB.zip", { dir: __dirname + "./WhatsUB" });
+        await extract("./WhatsUB.zip", {
+          dir: path.resolve("./") + "/WhatsUB",
+        });
         fs.unlinkSync("./WhatsUB.zip");
         console.log("Session restored from database.");
         return true;

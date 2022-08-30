@@ -2,9 +2,13 @@ const fs = require("fs");
 const qrcode = require("qrcode-terminal");
 const { Client, LocalAuth } = require("whatsapp-web.js");
 const config = require("./config.js");
-const { checkSessionAndLoad } = require("./database/sessions.js");
+const { checkSessionAndLoad } = require("./functions/sessions.js");
+const cleanup = require("./functions/cleanup.js");
 
 (async () => {
+  // clearing up old zip files if any
+  await cleanup();
+
   // check and load old session
   const _oldSessionLoaded = await checkSessionAndLoad();
 
