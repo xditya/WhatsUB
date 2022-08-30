@@ -2,6 +2,14 @@ const fs = require("fs");
 const qrcode = require("qrcode-terminal");
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const config = require("./config.js");
+const { checkSessionAndLoad } = require("./database/sessions.js");
+
+
+// check and load old session
+checkSessionAndLoad().then(value => { get_session = value });
+new Promise((resolve) => {
+    setTimeout(resolve, 5000);
+});
 
 const client = new Client({
   authStrategy: new LocalAuth({
@@ -30,7 +38,11 @@ client.on('qr', (qr) => {
   console.log(qrcode.generate(qr, { small: true }))
 });
 
-client.on('ready', () => {
+client.on('ready', async () => {
+  // console.log(get_session);
+  // if (await get_session == false) {
+  //   await storeSession();
+  // }
   console.log("\n\t\tWhatsUB has started!\n\t©️ @xditya < https://xditya.me >")
 });
 
@@ -50,14 +62,5 @@ client.on("message_create", async (msg) => {
   }
 });
 
-
-/*
-#TODO
-
-Save session (WhatsUB/*) to a database, maybe MongoDB
-Find a better name?
-Implement commands
-
-*/
 console.log("Initializing Client...")
 client.initialize();
