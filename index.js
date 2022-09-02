@@ -39,6 +39,9 @@ const cleanup = require("./functions/cleanup.js");
     console.log(qrcode.generate(qr, { small: true }));
   });
 
+  client.on("authenticated", async () => {
+    console.log("Authenticated!");
+  });
   client.on("ready", async () => {
     // console.log(get_session);
     // if (await get_session == false) {
