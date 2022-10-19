@@ -1,6 +1,7 @@
-const execute = async (client, msg, args) => {
-  await msg.delete(true);
-  await msg.reply("Pong!");
+const execute = async (client, msg) => {
+  let ms = ((new Date()).getTime()) - msg.timestamp;
+  if (ms) ms = `${ms}ms`; else ms = '';
+  await msg.reply(`Pong! ${ms}`);
 };
 
 module.exports = { execute };

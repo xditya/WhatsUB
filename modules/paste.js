@@ -1,9 +1,8 @@
-const execute = async (client, msg, args) => {
-  await msg.delete(true);
+const execute = async (client, msg) => {
   if (!msg.hasQuotedMsg)
     return await msg.reply("Please use this command as reply to a message!");
-  const rep = msg._data.quotedMsg.body;
-  const paste_url = "https://paste.xditya.me/" + (await getPasteKey(rep));
+  msg = await msg.getQuotedMessage();
+  const paste_url = "https://paste.xditya.me/" + (await getPasteKey(msg.body));
   await msg.reply(`*Pasted!*\n${paste_url}`);
 };
 
