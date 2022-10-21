@@ -1,19 +1,17 @@
 const { MessageMedia } = require("whatsapp-web.js");
 const axios = require("axios");
 
-const execute = async(client, msg, args) => {
+const execute = async (client, msg) => {
     var request = (await axios.get("https://yesno.wtf/api")).data;
-    var img_link = request["image"];
-    const media = await MessageMedia.fromUrl(img_link);
+    const media = await MessageMedia.fromUrl(request["image"]);
 
     media.mimetype = "image/gif";
     media.filename = "yesno.gif";
 
-    await msg.delete(true);
     await client.sendMessage(
-      msg.to,
-      media,
-      {caption: request["answer"]}
+        msg.id.remote,
+        media,
+        { caption: request["answer"] }
     );
 }
 
